@@ -21,8 +21,14 @@ st.markdown("Analisis komprehensif tren lowongan kerja, peta kompensasi global, 
 # Load Data
 @st.cache_data
 def load_data():
-    # Membaca dataset
-    df = pd.read_csv('../data/processed/dataset_clean.csv')
+# 1. Dapatkan lokasi folder dari file app.py ini berada
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+
+    # 2. Gabungkan lokasi tersebut dengan path menuju CSV
+    file_path = os.path.join(current_dir, '../data/processed/dataset_clean.csv')
+
+    # 3. Baca CSV menggunakan path yang sudah pasti tersebut
+    df = pd.read_csv(file_path)
     return df
 
 df = load_data()
